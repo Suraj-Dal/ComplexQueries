@@ -62,6 +62,9 @@ ON ST.ID = SB.ID;
 SELECT ST.Name, SB.Subject_Name
 FROM Student ST CROSS JOIN Subject SB;
 
+-- Creating One to One Relation
+ALTER TABLE Subject ADD CONSTRAINT FK_Student FOREIGN KEY(ID) REFERENCES Student(ID) ON DELETE CASCADE;
+DELETE FROM Student WHERE Name='Saket';
 
 
 
