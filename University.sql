@@ -66,6 +66,12 @@ FROM Student ST CROSS JOIN Subject SB;
 ALTER TABLE Subject ADD CONSTRAINT FK_Student FOREIGN KEY(ID) REFERENCES Student(ID) ON DELETE CASCADE;
 DELETE FROM Student WHERE Name='Saket';
 
+--Subquery
+SELECT * FROM Student
+WHERE Year=(SELECT MAX(Year) FROM Student);
+
+
+
 
 
 
