@@ -70,6 +70,34 @@ DELETE FROM Student WHERE Name='Saket';
 SELECT * FROM Student
 WHERE Year=(SELECT MAX(Year) FROM Student);
 
+--Stored Procedure
+GO
+CREATE PROCEDURE InsertStudent
+@Name varchar(30),
+@Contact varchar(30),
+@Department varchar(30),
+@Year varchar(10)
+AS
+BEGIN
+INSERT INTO Student(
+Name,Contact,Department,Year)
+VALUES
+(@Name,@Contact,@Department,@Year)
+END
+
+GO
+DECLARE	@return_value int
+
+EXEC	@return_value = [dbo].[InsertStudent]
+		@Name = N'Akshay',
+		@Contact = N'8010803786',
+		@Department = N'Mechanical',
+		@Year = N'2018'
+
+SELECT	'Return Value' = @return_value
+
+GO
+SELECT * FROM Student;
 
 
 
